@@ -1,0 +1,282 @@
+/* style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #034e0e;
+    background-image: url('spotify.jpg'); /* Your background image */
+    background-size: cover; /* Cover the entire page */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #f0f0f0;
+}
+
+.container-fluid {
+    max-width: 1400px; /* Adjust as needed */
+    margin: auto;
+    padding: 20px;
+}
+
+/* Targeting the Title Panel */
+.titlePanel {
+    background-color: rgba(2, 74, 22, 0.9); /* Dark green with some transparency */
+    color: black !important; /* Ensure black text */
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Stronger shadow for depth */
+    text-align: center;
+    font-size: 2em; /* Larger title */
+    font-weight: bold !important; /* Ensure bold */
+}
+
+/* --- NEW: Styling for the Input Section Container --- */
+/* You need to add 'div(class = "input-section-container", ...)' around your input fluidRows in ui.R */
+.input-section-container {
+    background-color: rgba(10, 50, 20, 0.9) !important; /* Darker green for input section */
+    padding: 25px !important; /* Ensure padding is applied */
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    color: #f0f0f0 !important; /* Ensure light text for the general panel */
+    margin-bottom: 30px; /* Space below the entire input block */
+}
+
+/* --- REMOVED OBSOLETE SELECTORS for sidebarPanel/mainPanel: ---
+.shiny-input-container ~ .col-sm-8 + div.col-sm-4,
+.col-sm-4.well,
+.col-sm-4.shiny-input-panel,
+.well,
+.col-sm-8
+*/
+
+/* --- NEW: General styling for columns within input rows --- */
+/* This ensures consistent padding within each input column */
+.input-section-container .col-sm-4 {
+    padding-left: 15px; /* Default Bootstrap column padding */
+    padding-right: 15px; /* Default Bootstrap column padding */
+    margin-bottom: 15px; /* Space between rows of inputs if needed */
+}
+
+/* --- NEW: Spacing between input rows (if not handled by column padding) --- */
+/* You might explicitly add margin-top to fluidRows that are not the first */
+.input-section-container .fluidRow + .fluidRow {
+    margin-top: 15px; /* Adds space between consecutive input rows */
+}
+
+
+/* Headings within the input section */
+.input-section-container h3 {
+    color: #97bdef !important; /* A soft blue/white for headings, force it! */
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; /* Light border */
+    padding-bottom: 10px !important;
+}
+
+/* Labels for numeric inputs */
+.form-group label,
+.form-group .control-label {
+    color: #e0e0e0 !important; /* Slightly darker white for labels, ensuring visibility, force it! */
+    font-weight: bold !important;
+    margin-bottom: 5px !important;
+}
+
+/* Numeric input fields themselves */
+.form-group input[type="number"],
+.form-group .form-control { /* Add .form-control for broader input coverage */
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Slightly transparent white input field */
+    color: white !important; /* Text color inside input - this is crucial for visibility */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Light border */
+    border-radius: 4px !important;
+    padding: 8px 10px !important;
+    width: 100% !important; /* Make inputs fill the width */
+    box-sizing: border-box !important; /* Include padding and border in the element's total width and height */
+}
+
+/* Focus state for input fields */
+.form-group input[type="number"]:focus,
+.form-group .form-control:focus {
+    outline: none !important;
+    border-color: #79e0a0 !important; /* Green highlight on focus */
+    box-shadow: 0 0 0 0.2rem rgba(121, 224, 160, 0.3) !important; /* Soft glow */
+}
+
+/* --- Styling for the Action Buttons section --- */
+/* Target the column containing the buttons */
+.fluidPage > .row:nth-of-type(4) .col-sm-12 { /* This is a specific selector for the button row after 3 input rows */
+    background-color: rgba(24, 110, 49, 0.9) !important; /* Lighter green with transparency, similar to old mainPanel */
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    margin-top: 30px; /* Space above buttons, after hr */
+    margin-bottom: 30px; /* Space below buttons, before hr */
+    display: flex; /* Use flexbox for button alignment */
+    justify-content: center; /* Center buttons horizontally */
+    flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
+    gap: 15px; /* Space between buttons */
+}
+
+.btn {
+    /* Removed display: block and width: 100% here to allow inline layout with flexbox */
+    /* Instead, we use gap in the parent and min-width for individual buttons */
+    min-width: 180px; /* Give buttons a minimum width */
+    font-weight: bold !important;
+    padding: 10px 15px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    font-size: 1.1em !important;
+    /* margin-top: 10px !important; removed as gap handles spacing */
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+/* Specific styling for the primary button (Predict Popularity) */
+.btn-primary {
+    background-color: #007bff !important; /* Bright blue */
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3 !important; /* Darker blue on hover */
+    transform: translateY(-2px) !important; /* Slight lift effect */
+}
+
+/* New styling for the "Reset" button */
+.btn-reset {
+    background-color: #17a2b8 !important; /* A slightly less saturated blue/teal */
+    color: white !important;
+}
+
+.btn-reset:hover {
+    background-color: #138496 !important; /* Darker shade on hover */
+    transform: translateY(-2px) !important;
+}
+
+/* Styling for the "Clear" button (another shade of blue) */
+.btn-clear {
+    background-color: #6610f2 !important; /* A purple-ish blue */
+    color: white !important;
+}
+
+.btn-clear:hover {
+    background-color: #520dc2 !important; /* Darker shade on hover */
+    transform: translateY(-2px) !important;
+}
+
+/* Generic button fallback (if any other buttons exist) */
+.btn:not(.btn-primary):not(.btn-reset):not(.btn-clear) {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.btn:not(.btn-primary):not(.btn-reset):not(.btn-clear):hover {
+    background-color: #5a6268 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* --- Styling for the Output Section (where the table is) --- */
+/* Target the column containing the dataTableOutput */
+.fluidPage > .row:last-of-type .col-sm-12 { /* Targets the last main content row */
+    background-color: rgba(24, 110, 49, 0.9) !important; /* Lighter green with transparency, similar to old mainPanel */
+    padding: 25px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    color: #f0f0f0 !important; /* Light text */
+    margin-top: 30px; /* Space above output block, after hr */
+}
+
+/* Headings within the output section */
+.fluidPage > .row:last-of-type .col-sm-12 h3,
+.fluidPage > .row:last-of-type .col-sm-12 p {
+    color: #97bdef !important; /* Heading color */
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; /* Light border */
+    padding-bottom: 10px !important;
+}
+
+/* DT (DataTables) Output Styling */
+.dataTables_wrapper {
+    margin-top: 20px !important;
+    background-color: rgba(30, 30, 30, 0.95) !important; /* Dark background for table */
+    border-radius: 8px !important;
+    overflow: hidden !important; /* Ensures borders/shadows are contained */
+}
+
+.dataTables_wrapper table.dataTable {
+    width: 100% !important; /* Ensure table takes full width of its container */
+    margin: 0 !important; /* Remove default margin */
+    color: #f0f0f0 !important; /* Light text for table content */
+}
+
+.dataTables_wrapper .dataTables_filter {
+    display: none !important; /* Hide the search bar, as it's disabled in R code options */
+}
+
+/* Table Header */
+.dataTables_wrapper thead th {
+    background-color: #024a16 !important; /* Dark green background for header */
+    color: white !important;
+    font-weight: bold !important;
+    padding: 12px 10px !important;
+    border-bottom: 2px solid #01360c !important; /* Darker border below header */
+    text-align: left !important; /* Align header text left */
+}
+
+/* Table Body */
+.dataTables_wrapper tbody td {
+    padding: 10px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; /* Lighter border between rows */
+}
+
+/* Alternating row colors for readability in dark theme */
+.dataTables_wrapper tbody tr:nth-child(even) {
+    background-color: rgba(40, 40, 40, 0.95) !important; /* Slightly different dark for even rows */
+}
+.dataTables_wrapper tbody tr:nth-child(odd) {
+    background-color: rgba(50, 50, 50, 0.95) !important; /* Slightly different dark for odd rows */
+}
+
+/* Hover effect on table rows */
+.dataTables_wrapper tbody tr:hover {
+    background-color: rgba(60, 60, 60, 0.95) !important; /* Lighter dark on hover */
+}
+
+/* Remove border from the last row */
+.dataTables_wrapper tbody tr:last-child td {
+    border-bottom: none !important;
+}
+
+/* Styling for the temporary message box from script.js */
+#app-message-box {
+    position: fixed !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 10px 20px !important;
+    border-radius: 5px !important;
+    color: white !important;
+    z-index: 1000 !important;
+    opacity: 0 !important;
+    transition: opacity 0.5s ease-in-out !important;
+    text-align: center !important;
+}
+
+/* --- Added rules for text visibility and general spacing --- */
+
+/* Horizontal Rules for visual separation */
+hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Light transparent line */
+    margin: 40px 0; /* Plenty of space above and below */
+}
+
+/* Ensure selected/active values in inputs are visible (for sliders, etc.) */
+.irs-bar, .irs-bar-edge, .irs-single, .irs-max, .irs-min {
+    background: #007bff !important; /* Example color for sliders */
+    border-color: #007bff !important;
+    color: white !important;
+}
+
+/* Any generic paragraphs within the main content area */
+.container-fluid p {
+    color: #f0f0f0 !important; /* Ensure paragraph text is light */
+}
